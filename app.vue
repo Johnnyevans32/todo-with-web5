@@ -226,3 +226,16 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+html {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+</style>
