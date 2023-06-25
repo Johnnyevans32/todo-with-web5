@@ -143,6 +143,9 @@ export default defineComponent({
       try {
         failIfNull(web5, "web5 not intialised");
 
+        if (!todoDescription.value) {
+          return;
+        }
         const data = {
           completed: false,
           description: todoDescription.value,
