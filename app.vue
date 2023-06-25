@@ -2,7 +2,11 @@
   <div
     class="flex flex-col gap-4 items-center text-white p-10 bg-black min-h-screen"
   >
-    <h1>track productivity with web5</h1>
+    <div class="flex justify-between min-w-full">
+      <h1>track productivity with web5</h1>
+      <div>{{ formattedDid() }}</div>
+    </div>
+
     <div>
       <label for="add-todo" class="sr-only">Add a todo</label>
       <input
@@ -18,13 +22,15 @@
       add
     </button>
     <div v-if="!Object.values(todos).length">
-      <h1 class="text-red-600">you currently have nothing been tracked</h1>
+      <h1 class="text-red-600 text-3xl">
+        you currently have nothing been tracked
+      </h1>
     </div>
     <div
       v-else
       class="border-2 border-white bg-transparent grid grid-cols-4 gap-2 p-4 min-w-full text-xs sm:text-xl"
     >
-      <p class="">completed?</p>
+      <p>completed?</p>
       <p>task name</p>
       <p>time started</p>
       <p></p>
@@ -56,7 +62,7 @@
       </button>
     </div>
 
-    <div class="flex gap-2 justify-between min-w-full">
+    <div class="flex justify-between min-w-full">
       <p>&copy; 0xjevan</p>
       <p>powered by web5</p>
     </div>
@@ -119,6 +125,11 @@ export default defineComponent({
         console.log("before mount error", { err });
       }
     });
+
+    const formattedDid = () =>
+      `${myDid.value.substring(0, 7)}...${myDid.value.slice(
+        myDid.value.length - 4
+      )}`;
 
     const formatDate = (date: Date) =>
       moment(date).format("dddd, Do MMM YYYY, h:mm:ss A");
@@ -207,6 +218,7 @@ export default defineComponent({
       deleteTodo,
       toggleTodoStatus,
       formatDate,
+      formattedDid,
     };
   },
 });
